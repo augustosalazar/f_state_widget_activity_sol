@@ -14,6 +14,7 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+  double theValue = 2;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -36,11 +37,35 @@ class _MyHomePageState extends State<MyHomePage> {
           Expanded(
             child: Column(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
-              children: <Widget>[W1(), W2(), W3()],
+              children: <Widget>[
+                W1(
+                  value: theValue,
+                  onAdd: _add,
+                  onSub: _sub,
+                ),
+                W2(),
+                W3(
+                  value: theValue,
+                )
+              ],
             ),
           ),
         ],
       )),
     );
+  }
+
+  void _add() {
+    print('add');
+    setState(() {
+      theValue++;
+    });
+  }
+
+  void _sub() {
+    print('sub');
+    setState(() {
+      theValue--;
+    });
   }
 }
